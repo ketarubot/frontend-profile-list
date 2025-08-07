@@ -59,40 +59,36 @@ function ProfileForm() {
 
   return (
     <>
-      <h1>프로필 카드 만들기</h1>
+      <h1 className="title">프로필 카드 만들기</h1>
       <form onSubmit={regist}>
-        <fieldset>
-          <h2>정보를 입력해주세요.</h2>
-          <ul>
-            <li>
-              <h3 className="content">Name</h3>
-              <input onChange={(e) => {syncInfo("name", e.target.value)}} ref={el => inputRefs.current["name"] = el} type="text" placeholder="ex) 김태훈" />
-              </li>
-            <li>
-              <h3 className="content">Team</h3>
-              <input onChange={(e) => {syncInfo("team", e.target.value)}} ref={el => inputRefs.current["team"] = el} type="text" placeholder="ex) 떠돌이" />
-              </li>
-            <li>
-              <h3 className="content">Job</h3>
-              <input onChange={(e) => {syncInfo("job", e.target.value)}} ref={el => inputRefs.current["job"] = el}type="text" placeholder="ex) Backend Developer" />
-              </li>
-            <li>
-              <h3 className="content">Phone</h3>
-              <input onChange={(e) => {syncInfo("phone", e.target.value)}} ref={el => inputRefs.current["phone"] = el} type="text" placeholder="ex) 010-4321-5678" />
-              </li>
-            <li>
-              <h3 className="content">Email</h3>
-              <input onChange={(e) => {syncInfo("email", e.target.value)}} ref={el => inputRefs.current["email"] = el} type="text" placeholder="ex) gimtaehooon@gmail.com" />
-            </li>
-            <li>
-              <h3 className="content">Image</h3>
-              <label><input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_default.png" />default</label>
-              <label>
-              <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_reverse.png" />reverse</label>
-            </li>
-          </ul>
-          <button type="submit">등록하기</button>
-        </fieldset>
+        <h2>정보를 입력해주세요.</h2>
+        <p>
+          <strong className="content">Name</strong>
+          <input onChange={(e) => {syncInfo("name", e.target.value)}} ref={el => inputRefs.current["name"] = el} type="text" placeholder="ex) 김태훈" />
+          </p>
+        <p>
+          <strong className="content">Team</strong>
+          <input onChange={(e) => {syncInfo("team", e.target.value)}} ref={el => inputRefs.current["team"] = el} type="text" placeholder="ex) 떠돌이" />
+          </p>
+        <p>
+          <strong className="content">Job</strong>
+          <input onChange={(e) => {syncInfo("job", e.target.value)}} ref={el => inputRefs.current["job"] = el}type="text" placeholder="ex) Backend Developer" />
+          </p>
+        <p>
+          <strong className="content">Phone</strong>
+          <input onChange={(e) => {syncInfo("phone", e.target.value)}} ref={el => inputRefs.current["phone"] = el} type="text" placeholder="ex) 010-4321-5678" />
+          </p>
+        <p>
+          <strong className="content">Email</strong>
+          <input onChange={(e) => {syncInfo("email", e.target.value)}} ref={el => inputRefs.current["email"] = el} type="text" placeholder="ex) gimtaehooon@gmail.com" />
+        </p>
+        <p>
+          <strong className="content">Image</strong>
+          <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_default.png" />Default
+          <span className="content"></span>
+          <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_reverse.png" />Reverse
+        </p>
+        <button type="submit">등록하기</button>
       </form>
     </>
   )
