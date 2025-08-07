@@ -11,11 +11,14 @@ function Home() {
   return (
     <>
       <Header />
-      <ul>
-      { textList.map((content, index) => (
-        <li key={index}>{content}</li>
-      )) }
-      </ul>
+      <div className="contents">
+        <h1 className="title">프로필 카드 리스트 만들기</h1>
+        <ul className="homeList">
+        { textList.map((content, index) => (
+          <li key={index}>{content}</li>
+        )) }
+        </ul>
+      </div>
     </>
   )
 }
