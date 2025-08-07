@@ -5,7 +5,9 @@ function ProfileLayout({data, setData}) {
   return (
     <>
       <Header />
-      <Outlet context={{data, setData}}/>
+      <div className="contents">
+        <Outlet context={{data, setData}}/>
+      </div>
     </>
   )
 }
