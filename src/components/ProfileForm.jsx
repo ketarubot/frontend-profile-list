@@ -1,10 +1,21 @@
 import { useRef, useState } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
+import '../styles/components.css';
 
 function ProfileForm() {
   const navigate = useNavigate();
   const {data, setData} = useOutletContext();
+  let maxId = 0;
+  for (const info of data) {
+    for (const [key, value] of Object.entries(info)) {
+      if (key === 'id') {
+        maxId = value>maxId?value:maxId;
+      }
+    }
+  }
+
   const [info, setInfo] = useState({
+    id: maxId+1,
     name: '',
     team: '',
     job: '',
@@ -33,7 +44,6 @@ function ProfileForm() {
 
   const regist = (e) => {
     e.preventDefault();
-    
     for (const [key, value] of Object.entries(info)) {
       if (value === '') {
         alert(message[key]);
@@ -44,7 +54,6 @@ function ProfileForm() {
     setData([...data,
       info]
     );
-    console.log(data);
     navigate('/profile/list');
   }
 
@@ -56,35 +65,30 @@ function ProfileForm() {
           <h2>정보를 입력해주세요.</h2>
           <ul>
             <li>
-              <label>
-                Name<input onChange={(e) => {syncInfo("name", e.target.value)}} ref={el => inputRefs.current["name"] = el} type="text" placeholder="ex) 류승찬" />
-              </label>
+              <h3 className="content">Name</h3>
+              <input onChange={(e) => {syncInfo("name", e.target.value)}} ref={el => inputRefs.current["name"] = el} type="text" placeholder="ex) 김태훈" />
               </li>
             <li>
-              <label>
-                Team<input onChange={(e) => {syncInfo("team", e.target.value)}} ref={el => inputRefs.current["team"] = el} type="text" placeholder="ex) PARADOX" />
-              </label>
+              <h3 className="content">Team</h3>
+              <input onChange={(e) => {syncInfo("team", e.target.value)}} ref={el => inputRefs.current["team"] = el} type="text" placeholder="ex) 떠돌이" />
               </li>
             <li>
-              <label>
-                Job<input onChange={(e) => {syncInfo("job", e.target.value)}} ref={el => inputRefs.current["job"] = el}type="text" placeholder="ex) Frontend Developer" />
-              </label>
+              <h3 className="content">Job</h3>
+              <input onChange={(e) => {syncInfo("job", e.target.value)}} ref={el => inputRefs.current["job"] = el}type="text" placeholder="ex) Backend Developer" />
               </li>
             <li>
-              <label>
-                Phone<input onChange={(e) => {syncInfo("phone", e.target.value)}} ref={el => inputRefs.current["phone"] = el} type="text" placeholder="ex) 010-8888-4444" />
-              </label>
+              <h3 className="content">Phone</h3>
+              <input onChange={(e) => {syncInfo("phone", e.target.value)}} ref={el => inputRefs.current["phone"] = el} type="text" placeholder="ex) 010-4321-5678" />
               </li>
             <li>
-              <label>
-                Email<input onChange={(e) => {syncInfo("email", e.target.value)}} ref={el => inputRefs.current["email"] = el} type="text" placeholder="ex) paradox@gmail.com" />
-              </label>
+              <h3 className="content">Email</h3>
+              <input onChange={(e) => {syncInfo("email", e.target.value)}} ref={el => inputRefs.current["email"] = el} type="text" placeholder="ex) gimtaehooon@gmail.com" />
             </li>
             <li>
+              <h3 className="content">Image</h3>
+              <label><input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_default.png" />default</label>
               <label>
-                Image<input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="../assets/PARADOX_default" />default
-                <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="../assets/PARADOX_reverse" />reverse
-              </label>
+              <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_reverse.png" />reverse</label>
             </li>
           </ul>
           <button type="submit">등록하기</button>
