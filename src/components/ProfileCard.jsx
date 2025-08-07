@@ -1,6 +1,11 @@
 import '../styles/components.css';
 
-function ProfileCard({data}) {
+function ProfileCard({data, setData}) {
+
+  const deleteCard = (id) => {
+  setData(prev => prev.filter(data => data.id !== id));
+  };
+
   return (
     <>
       <div className="profileCard">
@@ -16,8 +21,12 @@ function ProfileCard({data}) {
             <p><strong>email.</strong> {data.email}</p>
           </div>
           <div className="cardActions">
-            <button className="cardModify">수정</button>
-            <button className="cardDelete">삭제</button>
+            <button style={{
+                backgroundColor: "#90a3ff"
+              }}>수정</button>
+            <button style={{
+                backgroundColor: "#ff9090"
+              }} onClick={() => deleteCard(data.id)}>삭제</button>
           </div>
         </div>
       </div>
