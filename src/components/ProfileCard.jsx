@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import '../styles/components.css';
 
 function ProfileCard({data, setData}) {
+  const navigate = useNavigate();
+
+  const modifyCard = (id) => {
+    navigate(`/profile/modify/${id}`);
+  }
 
   const deleteCard = (id) => {
-  setData(prev => prev.filter(data => data.id !== id));
+    setData(prev => prev.filter(data => data.id !== id));
   };
 
   return (
@@ -23,7 +29,7 @@ function ProfileCard({data, setData}) {
           <div className="cardActions">
             <button style={{
                 backgroundColor: "#90a3ff"
-              }}>수정</button>
+              }} onClick={() => {modifyCard(data.id)}}>수정</button>
             <button style={{
                 backgroundColor: "#ff9090"
               }} onClick={() => deleteCard(data.id)}>삭제</button>
