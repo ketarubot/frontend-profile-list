@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import cardData from './data/cardData';
 import Home from './pages/Home';
 import ProfileLayout from './pages/ProfileLayout';
