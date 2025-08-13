@@ -109,17 +109,17 @@ form p input {
   flex: 1;
   height: 2em;
   font-size: 1em;
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
 
-form p input[type=radio] {
+form p input[type="radio"] {
   flex: 0;
   width: auto;
   height: auto;
   padding-left: 0;
 }
 
-button[type=submit] {
+button[type="submit"] {
   width: 100%;
   background-color: #74e474;
   border: 1px black solid;

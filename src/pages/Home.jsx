@@ -1,5 +1,5 @@
-import '../styles/Home.css';
-import Header from '../components/Header';
+import "../styles/Home.css";
+import Header from "../components/Header";
 
 function Home() {
   const textList = [
@@ -14,13 +14,13 @@ function Home() {
       <div className="contents">
         <h1 className="title">프로필 카드 리스트 만들기</h1>
         <ul className="homeList">
-        { textList.map((content, index) => (
-          <li key={index}>{content}</li>
-        )) }
+          {textList.map((content, index) => (
+            <li key={index}>{content}</li>
+          ))}
         </ul>
       </div>
     </>
-  )
+  );
 }
 
 export default Home;

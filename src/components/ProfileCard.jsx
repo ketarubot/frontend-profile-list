@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import '../styles/components.css';
+import { useNavigate } from "react-router-dom";
+import "../styles/components.css";
 
-function ProfileCard({data, setData}) {
+function ProfileCard({ data, setData }) {
   const navigate = useNavigate();
 
-  const modifyCard = (id) => {
+  const modifyCard = id => {
     navigate(`/profile/modify/${id}`);
-  }
+  };
 
-  const deleteCard = (id) => {
+  const deleteCard = id => {
     setData(prev => prev.filter(data => data.id !== id));
   };
 
@@ -21,23 +21,43 @@ function ProfileCard({data, setData}) {
         </div>
         <div className="cardBody">
           <div className="cardInfo">
-            <p><strong>Team. @{data.team}</strong></p>
-            <p><strong>{data.job}</strong></p>
-            <p><strong>tel.</strong> {data.phone}</p>
-            <p><strong>email.</strong> {data.email}</p>
+            <p>
+              <strong>Team. @{data.team}</strong>
+            </p>
+            <p>
+              <strong>{data.job}</strong>
+            </p>
+            <p>
+              <strong>tel.</strong> {data.phone}
+            </p>
+            <p>
+              <strong>email.</strong> {data.email}
+            </p>
           </div>
           <div className="cardActions">
-            <button style={{
-                backgroundColor: "#90a3ff"
-              }} onClick={() => {modifyCard(data.id)}}>수정</button>
-            <button style={{
-                backgroundColor: "#ff9090"
-              }} onClick={() => deleteCard(data.id)}>삭제</button>
+            <button
+              style={{
+                backgroundColor: "#90a3ff",
+              }}
+              onClick={() => {
+                modifyCard(data.id);
+              }}
+            >
+              수정
+            </button>
+            <button
+              style={{
+                backgroundColor: "#ff9090",
+              }}
+              onClick={() => deleteCard(data.id)}
+            >
+              삭제
+            </button>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default ProfileCard;

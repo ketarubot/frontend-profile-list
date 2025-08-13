@@ -1,61 +1,58 @@
 import { useRef, useState } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import '../styles/components.css';
+import "../styles/components.css";
 
 function ProfileForm() {
   const navigate = useNavigate();
-  const {data, setData} = useOutletContext();
+  const { data, setData } = useOutletContext();
   let maxId = 0;
   for (const info of data) {
     for (const [key, value] of Object.entries(info)) {
-      if (key === 'id') {
-        maxId = value>maxId?value:maxId;
+      if (key === "id") {
+        maxId = value > maxId ? value : maxId;
       }
     }
   }
 
   const [info, setInfo] = useState({
-    id: maxId+1,
-    name: '',
-    team: '',
-    job: '',
-    phone: '',
-    email: '',
-    image: '',
+    id: maxId + 1,
+    name: "",
+    team: "",
+    job: "",
+    phone: "",
+    email: "",
+    image: "",
   });
   const inputRefs = useRef({});
 
-  const syncInfo = function(key, value) {
+  const syncInfo = function (key, value) {
     setInfo(prev => ({
       ...prev,
-      [key]: value
-    })
-  );
-  }
+      [key]: value,
+    }));
+  };
 
   const message = {
-    name: '이름이 입력되지 않았습니다!', 
-    team: '팀이 입력되지 않았습니다!', 
-    job: '직책이 입력되지 않았습니다!', 
-    phone: '전화번호가 입력되지 않았습니다!', 
-    email: '이메일이 입력되지 않았습니다!',
-    image: '사진이 선택되지 않았습니다!'
-  }
+    name: "이름이 입력되지 않았습니다!",
+    team: "팀이 입력되지 않았습니다!",
+    job: "직책이 입력되지 않았습니다!",
+    phone: "전화번호가 입력되지 않았습니다!",
+    email: "이메일이 입력되지 않았습니다!",
+    image: "사진이 선택되지 않았습니다!",
+  };
 
-  const regist = (e) => {
+  const regist = e => {
     e.preventDefault();
     for (const [key, value] of Object.entries(info)) {
-      if (value === '') {
+      if (value === "") {
         alert(message[key]);
         inputRefs.current[key]?.focus();
         return;
       }
     }
-    setData([...data,
-      info]
-    );
-    navigate('/profile/list');
-  }
+    setData([...data, info]);
+    navigate("/profile/list");
+  };
 
   return (
     <>
@@ -64,34 +61,85 @@ function ProfileForm() {
         <h2>정보를 입력해주세요.</h2>
         <p>
           <strong className="content">Name</strong>
-          <input onChange={(e) => {syncInfo("name", e.target.value)}} ref={el => inputRefs.current["name"] = el} type="text" placeholder="ex) 김태훈" />
-          </p>
+          <input
+            onChange={e => {
+              syncInfo("name", e.target.value);
+            }}
+            ref={el => (inputRefs.current["name"] = el)}
+            type="text"
+            placeholder="ex) 김태훈"
+          />
+        </p>
         <p>
           <strong className="content">Team</strong>
-          <input onChange={(e) => {syncInfo("team", e.target.value)}} ref={el => inputRefs.current["team"] = el} type="text" placeholder="ex) 떠돌이" />
-          </p>
+          <input
+            onChange={e => {
+              syncInfo("team", e.target.value);
+            }}
+            ref={el => (inputRefs.current["team"] = el)}
+            type="text"
+            placeholder="ex) 떠돌이"
+          />
+        </p>
         <p>
           <strong className="content">Job</strong>
-          <input onChange={(e) => {syncInfo("job", e.target.value)}} ref={el => inputRefs.current["job"] = el}type="text" placeholder="ex) Backend Developer" />
-          </p>
+          <input
+            onChange={e => {
+              syncInfo("job", e.target.value);
+            }}
+            ref={el => (inputRefs.current["job"] = el)}
+            type="text"
+            placeholder="ex) Backend Developer"
+          />
+        </p>
         <p>
           <strong className="content">Phone</strong>
-          <input onChange={(e) => {syncInfo("phone", e.target.value)}} ref={el => inputRefs.current["phone"] = el} type="text" placeholder="ex) 010-4321-5678" />
-          </p>
+          <input
+            onChange={e => {
+              syncInfo("phone", e.target.value);
+            }}
+            ref={el => (inputRefs.current["phone"] = el)}
+            type="text"
+            placeholder="ex) 010-4321-5678"
+          />
+        </p>
         <p>
           <strong className="content">Email</strong>
-          <input onChange={(e) => {syncInfo("email", e.target.value)}} ref={el => inputRefs.current["email"] = el} type="text" placeholder="ex) gimtaehooon@gmail.com" />
+          <input
+            onChange={e => {
+              syncInfo("email", e.target.value);
+            }}
+            ref={el => (inputRefs.current["email"] = el)}
+            type="text"
+            placeholder="ex) gimtaehooon@gmail.com"
+          />
         </p>
         <p>
           <strong className="content">Image</strong>
-          <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_default.png" />Default
+          <input
+            onChange={e => {
+              syncInfo("image", e.target.value);
+            }}
+            type="radio"
+            name="image"
+            value="/assets/PARADOX_default.png"
+          />
+          Default
           <span className="content"></span>
-          <input onChange={(e) => {syncInfo("image", e.target.value)}} type="radio" name="image" value="/assets/PARADOX_reverse.png" />Reverse
+          <input
+            onChange={e => {
+              syncInfo("image", e.target.value);
+            }}
+            type="radio"
+            name="image"
+            value="/assets/PARADOX_reverse.png"
+          />
+          Reverse
         </p>
         <button type="submit">등록하기</button>
       </form>
     </>
-  )
+  );
 }
 
 export default ProfileForm;
