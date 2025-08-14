@@ -26,8 +26,8 @@ function ProfileModify() {
     navigate("/profile/list");
   };
 
-  const defaultImagePath = "/assets/PARADOX_default.png";
-  const reverseImagePath = "/assets/PARADOX_reverse.png";
+  const defaultImagePath = "/src/assets/PARADOX_default.png";
+  const reverseImagePath = "/src/assets/PARADOX_reverse.png";
 
   return (
     <>

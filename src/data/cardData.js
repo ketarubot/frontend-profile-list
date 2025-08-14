@@ -6,7 +6,7 @@ let cardData = [
     job: "Frontend Developer",
     phone: "010-1234-5678",
     email: "seojoon.kim@example.com",
-    image: "/assets/PARADOX_default.png",
+    image: "/src/assets/PARADOX_default.png",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ let cardData = [
     job: "Backend Developer",
     phone: "010-8765-4321",
     email: "harin.lee@example.com",
-    image: "/assets/PARADOX_reverse.png",
+    image: "/src/assets/PARADOX_reverse.png",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ let cardData = [
     job: "UI/UX Designer",
     phone: "010-1111-2222",
     email: "jihoo.park@example.com",
-    image: "/assets/PARADOX_default.png",
+    image: "/src/assets/PARADOX_default.png",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ let cardData = [
     job: "DevOps Engineer",
     phone: "010-3333-4444",
     email: "yoona.choi@example.com",
-    image: "/assets/PARADOX_reverse.png",
+    image: "/src/assets/PARADOX_reverse.png",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ let cardData = [
     job: "Full Stack Developer",
     phone: "010-5555-6666",
     email: "doyoon.jung@example.com",
-    image: "/assets/PARADOX_default.png",
+    image: "/src/assets/PARADOX_default.png",
   },
 ];
 

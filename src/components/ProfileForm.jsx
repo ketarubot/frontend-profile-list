@@ -122,7 +122,7 @@ function ProfileForm() {
             }}
             type="radio"
             name="image"
-            value="/assets/PARADOX_default.png"
+            value="/src/assets/PARADOX_default.png"
           />
           Default
           <span className="content"></span>
@@ -132,7 +132,7 @@ function ProfileForm() {
             }}
             type="radio"
             name="image"
-            value="/assets/PARADOX_reverse.png"
+            value="/src/assets/PARADOX_reverse.png"
           />
           Reverse
         </p>
