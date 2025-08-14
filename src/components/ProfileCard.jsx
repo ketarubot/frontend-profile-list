@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/components.css";
+import axios from "axios";
 
 function ProfileCard({ data, setData }) {
   const navigate = useNavigate();
@@ -8,8 +9,9 @@ function ProfileCard({ data, setData }) {
     navigate(`/profile/modify/${id}`);
   };
 
-  const deleteCard = id => {
-    setData(prev => prev.filter(data => data.id !== id));
+  const deleteCard = async id => {
+    await axios.delete(`http://localhost:8080/api/profile/${id}`);
+    setData(prev => prev.filter(body => body.id !== id));
   };
 
   return (
@@ -39,9 +41,7 @@ function ProfileCard({ data, setData }) {
               style={{
                 backgroundColor: "#90a3ff",
               }}
-              onClick={() => {
-                modifyCard(data.id);
-              }}
+              onClick={() => modifyCard(data.id)}
             >
               수정
             </button>

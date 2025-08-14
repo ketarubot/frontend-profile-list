@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 
-function ProfileLayout({ data, setData }) {
+function ProfileLayout() {
   return (
     <>
       <Header />
       <div className="contents">
-        <Outlet context={{ data, setData }} />
+        <Outlet />
       </div>
     </>
   );

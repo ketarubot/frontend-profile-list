@@ -1,17 +1,21 @@
 import "../styles/components.css";
-import { useNavigate, useParams, useOutletContext } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 function ProfileModify() {
   const navigate = useNavigate();
-  const { data, setData } = useOutletContext();
   const { id } = useParams();
-  const parsedId = parseInt(id, 10);
 
-  const currentData = data.find(d => d.id === parsedId);
-
-  const [info, setInfo] = useState(currentData);
+  const [info, setInfo] = useState([]);
   const inputRefs = useRef({});
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/profile/" + id)
+      .then(response => setInfo(response.data))
+      .catch(err => console.error(err));
+  }, []);
 
   const syncInfo = function (key, value) {
     setInfo(prev => ({
@@ -20,9 +24,9 @@ function ProfileModify() {
     }));
   };
 
-  const modify = e => {
+  const modify = async e => {
     e.preventDefault();
-    setData(prev => prev.map(d => (d.id === info.id ? info : d)));
+    await axios.put("http://localhost:8080/api/profile/" + id, info);
     navigate("/profile/list");
   };
 

@@ -1,21 +1,12 @@
 import { useRef, useState } from "react";
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/components.css";
+import axios from "axios";
 
 function ProfileForm() {
   const navigate = useNavigate();
-  const { data, setData } = useOutletContext();
-  let maxId = 0;
-  for (const info of data) {
-    for (const [key, value] of Object.entries(info)) {
-      if (key === "id") {
-        maxId = value > maxId ? value : maxId;
-      }
-    }
-  }
 
   const [info, setInfo] = useState({
-    id: maxId + 1,
     name: "",
     team: "",
     job: "",
@@ -41,7 +32,7 @@ function ProfileForm() {
     image: "사진이 선택되지 않았습니다!",
   };
 
-  const regist = e => {
+  const regist = async e => {
     e.preventDefault();
     for (const [key, value] of Object.entries(info)) {
       if (value === "") {
@@ -50,7 +41,7 @@ function ProfileForm() {
         return;
       }
     }
-    setData([...data, info]);
+    await axios.post("http://localhost:8080/api/profile", info);
     navigate("/profile/list");
   };
 
